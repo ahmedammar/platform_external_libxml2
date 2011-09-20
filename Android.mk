@@ -65,6 +65,18 @@ LOCAL_MODULE:= libxml2
 
 include $(BUILD_STATIC_LIBRARY)
 
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := $(common_SRC_FILES)
+LOCAL_C_INCLUDES += $(common_C_INCLUDES) external/icu4c/common
+LOCAL_SHARED_LIBRARIES += $(common_SHARED_LIBRARIES) libicuuc
+#LOCAL_CFLAGS += -fvisibility=hidden
+
+LOCAL_MODULE:= libxml2
+
+LOCAL_PRELINK_MODULE := false
+
+include $(BUILD_SHARED_LIBRARY)
 
 # For the host
 # ========================================================
